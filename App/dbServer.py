@@ -9,9 +9,6 @@ CORS(app)
 @app.route("/")
 def pyConnTest():    
     print('API')
-
-    # jsonData = dbHandler.ReadData()
-    # return jsonify({"ID":"Johnny"})
     return "Test API Success"
 
 @app.route("/API" , methods=['POST'])
@@ -21,18 +18,18 @@ def Create():
     json = request.get_json()
     print(json["ID"])
     print(json["NAME"])
-    
-    # jsonData = dbHandler.ReadData()
-    # return jsonify({"ID":"Johnny"})
+
+    dbHandler.Create(json["ID"] , json["NAME"])
     return 'Sccess Create'
 
 @app.route("/API")
 def Read():    
     print('Read API')
 
-    # jsonData = dbHandler.ReadData()
-    # return jsonify({"ID":"Johnny"})
-    return 'Sccess Read'
+    jsonData = dbHandler.Read()
+    print('Sccess Read')
+    print(jsonData)
+    return jsonData
 
 @app.route("/API" , methods=['PUT'])
 def Update():    
@@ -42,8 +39,7 @@ def Update():
     print(json["ID"])
     print(json["NAME"])
 
-    # jsonData = dbHandler.ReadData()
-    # return jsonify({"ID":"Johnny"})
+    dbHandler.Update(json["ID"] , json["NAME"])
     return 'Sccess Update'
 
 @app.route("/API" , methods=['DELETE'])
@@ -53,8 +49,7 @@ def Delete():
     json = request.get_json()
     print(json["ID"])
 
-    # jsonData = dbHandler.ReadData()
-    # return jsonify({"ID":"Johnny"})
+    dbHandler.Delete(json["ID"])
     return 'Sccess Delete'
     
 if __name__ == "__main__":

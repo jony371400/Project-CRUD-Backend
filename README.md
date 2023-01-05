@@ -65,3 +65,11 @@ Delete
             "ID" : 1
         } 
 ```
+
+> SQL
+```
+INSERT INTO Customers (ID, NAME) VALUES (5 , 'Johnny');
+select * from Customers;
+UPDATE Customers SET NAME = 'Johnny2' WHERE ID = 5;
+DELETE FROM Customers WHERE ID = 5;
+```
